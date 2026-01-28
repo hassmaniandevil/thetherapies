@@ -70,9 +70,8 @@ export default function ResourcesPage() {
                   <p className="mb-3 text-xs leading-relaxed text-foreground-muted">{resource.description}</p>
                   <div className="flex flex-wrap items-center gap-2">
                     <span className="text-xs text-accent">{resource.therapyName}</span>
-                    <span className="rounded bg-surface-sunken px-2 py-0.5 text-xs text-foreground-subtle">{resource.format}</span>
                     {resource.hasContent ? (
-                      <span className="rounded bg-sage-100 px-2 py-0.5 text-xs font-medium text-sage-700">Ready</span>
+                      <span className="rounded bg-sage-100 px-2 py-0.5 text-xs font-medium text-sage-700">PDF</span>
                     ) : (
                       <span className="rounded bg-stone-100 px-2 py-0.5 text-xs text-stone-500">Coming soon</span>
                     )}

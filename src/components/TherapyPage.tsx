@@ -275,9 +275,8 @@ export default function TherapyPage({ therapy }: { therapy: Therapy }) {
                       </div>
                       <p className="text-xs leading-relaxed text-foreground-muted">{resource.description}</p>
                       <div className="mt-2 flex flex-wrap items-center gap-2">
-                        <span className="rounded bg-surface-sunken px-2 py-0.5 text-xs text-foreground-subtle">{resource.format}</span>
                         {hasContent ? (
-                          <span className="rounded bg-sage-100 px-2 py-0.5 text-xs font-medium text-sage-700">Ready</span>
+                          <span className="rounded bg-sage-100 px-2 py-0.5 text-xs font-medium text-sage-700">PDF</span>
                         ) : (
                           <span className="rounded bg-stone-100 px-2 py-0.5 text-xs text-stone-500">Coming soon</span>
                         )}
