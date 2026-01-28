@@ -37,6 +37,8 @@ export interface Resource {
   format: string;
   readingLevel?: string;
   riskLevel: 'low' | 'medium' | 'clinician_gated';
+  externalUrl?: string;
+  hasContent?: boolean;
 }
 
 export interface Technique {
