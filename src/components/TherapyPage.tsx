@@ -6,6 +6,7 @@ import { Therapy, AudienceMode } from '@/lib/types';
 import AudienceToggle from './AudienceToggle';
 import EvidenceBadge from './EvidenceBadge';
 import { getSourcesByIds } from '@/data/sources';
+import { resourceContents } from '@/data/resource-content';
 
 export default function TherapyPage({ therapy }: { therapy: Therapy }) {
   const [mode, setMode] = useState<AudienceMode>('how_it_works');
@@ -260,21 +261,33 @@ export default function TherapyPage({ therapy }: { therapy: Therapy }) {
             <div key={audience} className="mb-6">
               <h4 className="mb-3 font-semibold">{labels[audience]}</h4>
               <div className="grid gap-3 sm:grid-cols-2">
-                {audienceResources.map((resource) => (
-                  <div key={resource.id} className="resource-card">
-                    <div className="mb-1 flex items-center gap-2">
-                      <svg className="h-4 w-4 text-primary" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clipRule="evenodd" /></svg>
-                      <h5 className="text-sm font-medium">{resource.title}</h5>
-                    </div>
-                    <p className="text-xs leading-relaxed text-foreground-muted">{resource.description}</p>
-                    <div className="mt-2 flex items-center gap-2">
-                      <span className="rounded bg-surface-sunken px-2 py-0.5 text-xs text-foreground-subtle">{resource.format}</span>
-                      {resource.riskLevel === 'clinician_gated' && (
-                        <span className="rounded bg-warning-light px-2 py-0.5 text-xs text-stone-600">Clinician-gated</span>
-                      )}
-                    </div>
-                  </div>
-                ))}
+                {audienceResources.map((resource) => {
+                  const hasContent = !!resourceContents[resource.id];
+                  return (
+                    <Link
+                      key={resource.id}
+                      href={`/resources/${resource.id}`}
+                      className="resource-card group block transition-all hover:border-primary hover:shadow-md"
+                    >
+                      <div className="mb-1 flex items-center gap-2">
+                        <svg className="h-4 w-4 text-primary" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clipRule="evenodd" /></svg>
+                        <h5 className="text-sm font-medium group-hover:text-primary">{resource.title}</h5>
+                      </div>
+                      <p className="text-xs leading-relaxed text-foreground-muted">{resource.description}</p>
+                      <div className="mt-2 flex flex-wrap items-center gap-2">
+                        <span className="rounded bg-surface-sunken px-2 py-0.5 text-xs text-foreground-subtle">{resource.format}</span>
+                        {hasContent ? (
+                          <span className="rounded bg-sage-100 px-2 py-0.5 text-xs font-medium text-sage-700">Ready</span>
+                        ) : (
+                          <span className="rounded bg-stone-100 px-2 py-0.5 text-xs text-stone-500">Coming soon</span>
+                        )}
+                        {resource.riskLevel === 'clinician_gated' && (
+                          <span className="rounded bg-warning-light px-2 py-0.5 text-xs text-stone-600">Clinician-gated</span>
+                        )}
+                      </div>
+                    </Link>
+                  );
+                })}
               </div>
             </div>
           );
