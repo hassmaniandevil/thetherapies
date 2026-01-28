@@ -15,7 +15,7 @@ export default function Footer() {
       </div>
 
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-4">
           <div>
             <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-foreground-muted">Browse</h3>
             <ul className="space-y-2 text-sm">
