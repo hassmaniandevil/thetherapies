@@ -51,9 +51,17 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 border-t border-border pt-8">
+          <div className="mb-4 rounded-lg bg-surface-sunken p-4 text-center">
+            <p className="text-xs font-medium uppercase tracking-wider text-foreground-muted">Medical Disclaimer</p>
+            <p className="mt-1 text-sm text-foreground-muted">
+              This website provides <strong>educational information only</strong> and does not provide medical advice, diagnosis, or treatment.
+              The content is not intended to replace professional medical advice from your GP, NHS services, or qualified mental health practitioner.
+              If you have concerns about your mental health, please contact your GP or NHS 111.
+            </p>
+          </div>
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
             <p className="text-sm text-foreground-subtle">
-              TheTherapies is an educational resource. It is not a substitute for professional medical or psychological advice. Always consult a qualified practitioner.
+              TheTherapies is an independent educational resource. Not affiliated with the NHS.
             </p>
             <p className="whitespace-nowrap text-sm text-foreground-subtle">
               &copy; {new Date().getFullYear()} TheTherapies

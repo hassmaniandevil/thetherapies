@@ -1,7 +1,21 @@
 import type { Metadata, Viewport } from "next";
+import { Inter, Lora } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+
+// Self-hosted fonts via Next.js (no external requests at runtime)
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const lora = Lora({
+  subsets: ["latin"],
+  variable: "--font-lora",
+  display: "swap",
+});
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -16,15 +30,26 @@ export const metadata: Metadata = {
     template: "%s | TheTherapies",
   },
   description:
-    "A comprehensive, evidence-based resource for understanding psychological therapies. For everyone — from those seeking help to practising clinicians.",
+    "Educational resource about evidence-based psychological therapies. Information only — not medical advice. For educational purposes for those seeking to understand therapy approaches.",
   keywords: [
-    "therapy", "psychological therapy", "CBT", "DBT", "EMDR", "CAT",
-    "mental health", "evidence-based", "worksheets", "printables",
+    "therapy education", "psychological therapy information", "CBT", "DBT", "EMDR", "CAT",
+    "mental health education", "evidence-based", "educational resources",
   ],
+  category: "education",
+  classification: "Educational Resource",
+  robots: {
+    index: true,
+    follow: true,
+  },
   openGraph: {
     type: "website",
     locale: "en_GB",
     siteName: "TheTherapies",
+  },
+  other: {
+    "rating": "General",
+    "distribution": "Global",
+    "revisit-after": "7 days",
   },
 };
 
@@ -34,15 +59,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+    <html lang="en" className={`${inter.variable} ${lora.variable}`}>
       <body className="min-h-screen bg-background text-foreground antialiased">
         <a href="#main" className="skip-link">Skip to main content</a>
         <Navigation />

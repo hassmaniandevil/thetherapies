@@ -92,9 +92,9 @@
   --color-evidence-emerging: #b19979;
   --color-evidence-mixed: #9e9484;
 
-  /* Typography */
-  --font-sans: 'Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', sans-serif;
-  --font-serif: 'Lora', 'Georgia', 'Cambria', 'Times New Roman', serif;
+  /* Typography - uses Next.js self-hosted fonts */
+  --font-sans: var(--font-inter), 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', sans-serif;
+  --font-serif: var(--font-lora), 'Georgia', 'Cambria', 'Times New Roman', serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', 'monospace';
 }
 
